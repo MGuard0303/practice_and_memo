@@ -9,6 +9,13 @@
 这个函数接受一个字符串 (DNA/RNA 序列) 为输入。当前版本只考虑将纯序列作为输入，没有考虑各种序列格式的处理和转换。
 
 该函数使用 sklearn.preprocessing.LabelEncoder() 将序列转换为 integer encoding 的形式，然后使用 PyTorch 自带的 one_hot() 函数将 integer encoding 序列转换为独热编码形式。
+
+
+# ==========
+Future Plan
+实现对批量序列进行独热编码处理
+实现对不同格式的序列进行预处理
+# ==========
 """
 
 
