@@ -32,7 +32,11 @@ def one_hot_encode(sequence):
     seq_array = np.array(list(sequence))
 
     # 序列的integer encoding形式
-    integer_encoding = label_encoder.fit_transform(seq_array)
+    # ==========
+    # 应当使用独立的符号集对encoder进行fit，然后用fit完成的encoder来完成转换
+    # ==========
+    @TODO
+    #integer_encoding = label_encoder.fit_transform(seq_array)
 
     # 将integer encoding的序列转化为pytorch tensor
     seq_tensor = torch.tensor(integer_encoding)
