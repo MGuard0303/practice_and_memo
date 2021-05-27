@@ -27,22 +27,21 @@ from sklearn import preprocessing
 
 
 def one_hot_encode(sequence):
+    sigma = ["A", "C", "G", "U"]    # sigma should contain all symbols used
+    
     label_encoder = preprocessing.LabelEncoder()
+    label_encoder.fit(sigma)
 
-    seq_array = np.array(list(sequence))
-
-    # 序列的integer encoding形式
-    # ==========
-    # 应当使用独立的符号集对encoder进行fit，然后用fit完成的encoder来完成转换
-    # ==========
-    @TODO
-    #integer_encoding = label_encoder.fit_transform(seq_array)
+    array_seq = np.array(list(sequence))
+   
+   # 将sequence转换为integer encoding
+    integer_seq = label_encoder.transform(array_seq)
 
     # 将integer encoding的序列转化为pytorch tensor
-    seq_tensor = torch.tensor(integer_encoding)
+    tensor_seq = torch.tensor(integer_seq, dtype=torch.int64)  # I don't know why "dtype=torch.int64" is necessary
 
     # 使用pytorch的方法生成one-hot encoding
-    one_hot_seq = F.one_hot(seq_tensor)
+    one_hot_seq = F.one_hot(tensor_seq)
 
 
     return one_hot_seq
@@ -50,6 +49,6 @@ def one_hot_encode(sequence):
 
 
 # e.g.
-example = "UACCUGGUUGAUCCUGCCAGUAGCAUAUGCUUGUCUC"
-one_hot_example = one_hot_encode(example)
+example_seq = "UACCUGGUUGAUCCUGCCAGUAGCAUAUGCUUGUCUC"
+one_hot_example = one_hot_encode(example_seq)
 print(one_hot_example)
