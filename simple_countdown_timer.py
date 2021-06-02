@@ -1,6 +1,8 @@
 """docstrings
 该文件提供了一个 Hour : Minute 级别的倒计时工具。作为输入的 Hour 和 Minute 可以是浮点数，Minute 也不需要限制在60之内。
 
+e.g. Hour:Minute -> 3:05; Hour:Minute -> 3.4:45.1; Hour:Minute -> 47.24:168.4
+
 # ==========
 Future Plan
 添加通过邮件通知的功能
