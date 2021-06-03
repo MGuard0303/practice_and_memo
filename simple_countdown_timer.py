@@ -3,21 +3,26 @@
 
 e.g. Hour:Minute -> 3:05; Hour:Minute -> 3.4:45.1; Hour:Minute -> 47.24:168.4
 
-# ==========
-Future Plan
-添加通过邮件通知的功能
-# ==========
+该文件提供了一个可选的计时结束后的邮件提醒服务。
 """
 
 
 
 import time
+from email.message import EmailMessage
+import smtplib
 
 
 
 
 # 尚未实现对秒级别倒数的处理
 ori_hour, ori_min = input("Please input countdown time in 'Hour:Minute': ").split(sep=":")
+
+# 询问用户是否需要邮件服务
+mail_notice = input("Do you wish to receive a mail notification when countdown complete? (y|n) ")
+
+if mail_notice == "y":
+    receiver = input("Please enter your email: ")
 
 ori_hour = float(ori_hour)
 ori_min = float(ori_min)
@@ -78,8 +83,31 @@ duration_h, duration_m = divmod(duration, 60)
 
 print("TIME'S UP")
 print("The setting time is {:02d} : {:02d}".format(hours_copy, minutes_copy))
-print("The runing time is {:02d} : {:02d}".format(int(duration_h), int(duration_m)))
+print("The running time is {:02d} : {:02d}".format(int(duration_h), int(duration_m)))
 
 
 
-# 需要完成时邮件提醒
+# 邮件提醒服务
+if mail_notice == "y":
+    sender = "result.and.notification.center@gmail.com"
+    pwd = "notification"
+    
+    # 构建邮件
+    msg = EmailMessage()
+    msg.set_content("TIME'S UP\nThe setting time is {:02d} : {:02d}\nThe running time is {:02d} : {:02d}".format(hours_copy, minutes_copy, int(duration_h), int(duration_m)))
+    msg["Subject"] = "TIME'S UP"
+    msg["From"] = sender
+    msg["To"] = receiver
+
+
+    
+    try:
+        # 建立SMTP连接
+        smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
+        # 不需要显式调用smtplib.ehlo()方法
+        smtpObj.starttls()  # 加密连接
+        smtpObj.login(sender, pwd)
+        smtpObj.sendmail(sender, receiver, msg.as_string()) 
+    finally:
+        smtpObj.quit()
+    
