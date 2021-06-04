@@ -5,6 +5,11 @@
 
 
 # ==========
+# Note: 最好使用 secrets 模块代替 random 模块
+# ==========
+
+
+# ==========
 # Future Work
 # 1. 当 pass_len 小于8时构造失败，并返回提示。
 # 2. 将密码保存在一个密码本中，并维护这个密码本。
@@ -45,6 +50,11 @@ class PasswordGenerator():
             random.shuffle(self.pwd)
             password = "".join(self.pwd)
             return password
+        
+        
+        """
+        另一种实现方式是指定特殊符号 ( 大写字符，数字，标点符号等 ) 的数量，使用 while True 无限循环不断生成随机字符串，通过 any(), sum() 等函数检查字符串是否包含指定种类指定数量的特殊符号。
+        """
 
 
         # condition 2
