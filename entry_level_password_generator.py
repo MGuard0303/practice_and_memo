@@ -1,4 +1,10 @@
 """docstring
+# ==========
+# DEPRECATED
+# This class will not be updated and used any more.
+# ==========
+
+
 这里定义了一个用于生成随机密码的类。参数 pass_len, capital, punc 分别控制密码的长度，是否需要大写字符和是否需要标点符号。
 
 密码的前8位通过定义好的规则生成。当前版本8位之后的密码是随机的小写字符，但是更改也很容易。密码在返回用户时会被打乱。
