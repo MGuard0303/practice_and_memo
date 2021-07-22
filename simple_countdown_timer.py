@@ -51,7 +51,7 @@ minutes_copy = minutes
 
 
 SLEEP_TIME = 60  # sleep for 1 min (60s)
-countdown_time = hours*3600 + minutes*60   # countdown_time unit is sec
+countdown_time = hours*3600 + minutes*60  # countdown_time unit is sec
 
 
 start = time.time()
@@ -68,7 +68,7 @@ while countdown_time > 0:
             hours -= 1
 
     except KeyboardInterrupt as e:
-        end = time.time()   # time()返回值单位为秒
+        end = time.time()  # time()返回值单位为秒
         duration = (end - start) / 60  # 将duration转换到min
         duration_h, duration_m = divmod(duration, 60) 
 
