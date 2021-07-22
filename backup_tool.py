@@ -12,7 +12,7 @@ import datetime
 
 
 while True:
-    source = input("Please enter full path of directory you want to archive:")    # 返回 str
+    source = input("Please enter full path of directory you want to archive:")  # 返回 str
    
     if source == "exit":
         exit()
@@ -27,7 +27,7 @@ while True:
 
 
     if os.path.isdir(target) == True: 
-        file_name = target + "/archive_" + current_time # 为归档文件给予默认名 archive
+        file_name = target + "/archive_" + current_time  # 为归档文件给予默认名 archive
     elif os.path.isdir(target) == False:
         file_name = source + "/" + target + "_" + current_time  # 如果未给出压缩包路径，默认路径在需要压缩的路径下
     
