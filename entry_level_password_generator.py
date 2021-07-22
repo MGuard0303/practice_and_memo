@@ -46,7 +46,7 @@ class PasswordGenerator():
     def generate(self):
         # condition 1
         if self.capital == True and self.punc == False:
-            [self.pwd.append(LOWERCASE[random.randint(0, len(LOWERCASE)-1)]) for i in (0, 1, 2, 3)] # 也可以使用random或secrets模块的choice()函数简单实现
+            [self.pwd.append(LOWERCASE[random.randint(0, len(LOWERCASE)-1)]) for i in (0, 1, 2, 3)]  # 也可以使用random或secrets模块的choice()函数简单实现
             [self.pwd.append(UPPERCASE[random.randint(0, len(UPPERCASE)-1)]) for i in (4, 5)]
             [self.pwd.append(NUMBER[random.randint(0, len(NUMBER)-1)]) for i in (6, 7)]
 
