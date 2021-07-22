@@ -27,7 +27,7 @@ from sklearn import preprocessing
 
 
 def one_hot_encode(sequence):
-    sigma = ["A", "C", "G", "U"]    # sigma should contain all symbols used
+    sigma = ["A", "C", "G", "U"]  # sigma should contain all symbols used
     
     label_encoder = preprocessing.LabelEncoder()
     label_encoder.fit(sigma)
